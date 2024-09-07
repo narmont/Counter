@@ -414,10 +414,11 @@ GameObject:
   - component: {fileID: 999745690}
   - component: {fileID: 999745692}
   - component: {fileID: 999745691}
-  - component: {fileID: 999745693}
-  - component: {fileID: 999745694}
+  - component: {fileID: 999745698}
+  - component: {fileID: 999745697}
+  - component: {fileID: 999745696}
   m_Layer: 5
-  m_Name: Timer Text
+  m_Name: Display Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,21 +541,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999745689}
   m_CullTransparentMesh: 1
---- !u!114 &999745693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 999745689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d4f552dfc320fa40ada0db67d078775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timerText: {fileID: 999745691}
-  _smoothDecreaseDuration: 0.5
---- !u!114 &999745694
+--- !u!114 &999745696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -597,19 +584,35 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 999745691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 999745693}
-        m_TargetAssemblyTypeName: Timer, Assembly-CSharp
-        m_MethodName: Counter
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
+      m_Calls: []
+--- !u!114 &999745697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999745689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9866d22fe22594489f91a3c379ed813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textDisplay: {fileID: 999745691}
+  _counter: {fileID: 999745698}
+--- !u!114 &999745698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999745689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4f8f8b3114461439b8ca224abfcc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smoothDecreaseDuration: 0.5
+  _button: {fileID: 999745696}
 --- !u!1 &1107735455
 GameObject:
   m_ObjectHideFlags: 0

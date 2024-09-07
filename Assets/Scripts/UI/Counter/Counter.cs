@@ -3,39 +3,40 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
+[RequireComponent(typeof(Button))]
 public class Counter : MonoBehaviour
 {
     [SerializeField] private float _smoothDecreaseDuration;
-    [SerializeField] private Button _button;
+    [SerializeField] private Button _buttonSwitch;
 
     public event Action<int> TextChanged;
 
-    private Coroutine _changeCounter;
-    private bool _counterRunning = false;
+    private Coroutine _turnOnOff;
+    private bool _isRunning = false;
     private int _valueDisplay = 0;
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(ChangeToggle);
+        _buttonSwitch.onClick.AddListener(ChangeToggle);
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(ChangeToggle);
+        _buttonSwitch.onClick.RemoveListener(ChangeToggle);
     }
 
     private void ChangeToggle()
     {
-        _counterRunning = !_counterRunning;
+        _isRunning = !_isRunning;
 
-        if (_counterRunning == true)
+        if (_isRunning == true)
         {
-            _changeCounter = StartCoroutine(Increase());
+            _turnOnOff = StartCoroutine(Increase());
         }
         else
         {
-            if (_changeCounter != null)
-                StopCoroutine(_changeCounter);
+            if (_turnOnOff != null)
+                StopCoroutine(_turnOnOff);
         }
     }
 
@@ -43,7 +44,7 @@ public class Counter : MonoBehaviour
     {
         var delay = new WaitForSeconds(_smoothDecreaseDuration);
 
-        while (_counterRunning == true)
+        while (_isRunning == true)
         {
             _valueDisplay += increaseCounter;
             TextChanged?.Invoke(_valueDisplay);

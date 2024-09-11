@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 
-
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class View : MonoBehaviour
 {
@@ -15,12 +14,12 @@ public class View : MonoBehaviour
 
     private void OnEnable()
     {
-        _counter.TextChanged += Display;
+        _counter.ValueChangeDisplay += Display;
     }
 
     private void OnDisable()
     {
-        _counter.TextChanged -= Display;
+        _counter.ValueChangeDisplay -= Display;
     }
 
     private void Display(int count)

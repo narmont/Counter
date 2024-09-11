@@ -9,10 +9,10 @@ public class Counter : MonoBehaviour
     [SerializeField] private float _smoothDecreaseDuration;
     [SerializeField] private Button _buttonSwitch;
 
-    private Coroutine _turnOnOff;
-    private int _valueDisplay = 0;
+    private Coroutine _coroutine;
+    private int _value = 0;
 
-    public event Action<int> ValueChangedDisplay;
+    public event Action<int> ValueChangeDisplay;
 
     private void OnEnable()
     {
@@ -26,14 +26,14 @@ public class Counter : MonoBehaviour
 
     private void ChangeToggle()
     {
-        if (_turnOnOff != null)
+        if (_coroutine != null)
         {
-            StopCoroutine(_turnOnOff);
-            _turnOnOff = null;
+            StopCoroutine(_coroutine);
+            _coroutine = null;
         }
         else
         {
-            _turnOnOff = StartCoroutine(Increase());
+            _coroutine = StartCoroutine(Increase());
         }
     }
 
@@ -43,8 +43,8 @@ public class Counter : MonoBehaviour
 
         while (true)
         {
-            _valueDisplay += increaseCounter;
-            ValueChangedDisplay?.Invoke(_valueDisplay);
+            _value += increaseCounter;
+            ValueChangeDisplay?.Invoke(_value);
             yield return delay;
         }
     }
